@@ -1,17 +1,17 @@
 ## waqImport a ~/Kutatás/binHidegviz/waqImport.R  ill. binHidegviz
 Sys.setenv(TZ='UTC')
 
-ttfiles <- dir("bin")
+ttfiles <- dir("2019/bin")
 
 ## Import binary files
 for(ttname in ttfiles) {
     ttshortname <- sub("\\.waq","",ttname)
-    assign(ttshortname, waqImport(paste0("bin/",ttname), freq.in.sec = 1800, trunc.unit = "hour", Correction = 100)-41.1)
+    assign(ttshortname, waqImport(paste0("2019/bin/",ttname), freq.in.sec = 1800, trunc.unit = "hour", Correction = 100)-41.1)
     print(start(get(ttshortname)));print(end(get(ttshortname)))
 }
 
 ## Some duplicated
-## ttfilenames <- ls(patt="^h1[1-9abc]")
+ttfilenames <- ls(patt="^h1[1-9abc]")
 
 ## Missing????
 ## 2019-04-05 – 2019-04-12
@@ -50,6 +50,7 @@ write.zoo(hom['2019-01-01/'],"h1full.csv",sep=";",dec=",")
 
 ## Átlag
 write.zoo(apply.daily(hom[,1],mean),"napihom2019.csv",sep=";",dec=",")
+write.zoo(round(apply.weekly(hom[,1],mean),2),"napihom2019.csv",sep=";",dec=",")
 
 ######################################################################
 ## Kiss Marci
