@@ -3,7 +3,7 @@ ttfile <- dir("Csapi")
 
 for(tti in 1:8) {
     ttaktfile <- ttfile[tti]
-    ttakt <- read.csv2(paste0("Csapi/",ttaktfile), enc="latin1", na="-")
+    ttakt <- read.csv2(paste0("Csapi/",ttaktfile), enc="latin1", na=c("NA","-"))
     ttaktname <- sub(".csv", "", ttaktfile)
     ttDatejav <- gsub("\\.", "-", ttakt$Date)
     ttPOSIXdattim <- as.POSIXct(paste(ttDatejav, ttakt$Time))
