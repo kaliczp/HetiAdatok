@@ -1,7 +1,7 @@
 ttallhomnam <- ls(patt="hom2")
 
 hom <- hom2010
-ttallhomnam <- paste0("hom20", 11:20)
+ttallhomnam <- paste0("hom20", 11:21)
 for(ttobj in ttallhomnam) {
     ttaktind <- index(hom)
     ttaktend <- ttaktind[length(ttaktind)]
